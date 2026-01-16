@@ -1,0 +1,772 @@
+/* =========================================
+   1. COLOR PALETTE & VARIABLES 
+   ========================================= */
+:root {
+    --primary-color: #013220;    /* Deep Forest Teal */
+    --secondary-color: #d4af37;  /* Royal Gold */
+    --text-light: #ffffff;
+    --text-dark: #333333;
+    --accent-blue: #00bcd4;
+    --bg-overlay: rgba(0, 40, 30, 0.75);
+	--nav-active: #50fa7b;     /* Bright Green for active text */
+}
+
+/* =========================================
+   2. GENERAL STYLES 
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: #f4f4f4;
+}
+
+p {
+    font-size: 15px; 
+    line-height: 1.8;  
+    margin-bottom: 15px;
+}
+
+/* =========================================
+   3. NAVIGATION 
+   ========================================= */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2000;
+    background: var(--primary-color);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    padding: 20px 8%; /* Kembali kepada 20px supaya nda nipis */
+    background: var(--primary-color);
+    color: white;
+}
+
+.logo {
+    font-size: 1.5rem; /* Saiz asal yang besar */
+    font-weight: bold;
+    color: var(--secondary-color);
+    white-space: nowrap; 
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    flex-direction: row; /* Sentiasa horizontal */
+    align-items: center;
+    gap: 20px; 
+}
+
+.nav-links li {
+    display: flex;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 0.9rem; /* Saiz fon asal */
+    transition: 0.3s;
+    white-space: nowrap; /* Paksa menu satu baris */
+}
+
+.btn-contact {
+    background: var(--secondary-color);
+    padding: 8px 20px; /* Saiz butang asal */
+    border-radius: 5px;
+    color: var(--primary-color) !important;
+    font-weight: bold;
+}
+
+.nav-links a.active-link {
+    color: #98fb98 !important; /* Mint / Light Green highlight */
+    font-weight: bold;
+    border-bottom: 2px solid #98fb98; 
+}
+
+.nav-links a:hover {
+    color: var(--secondary-color);
+}
+
+.home-emoji {
+    font-size: 2rem; /* Anda boleh tukar ke 1.8rem jika terlalu besar */
+    vertical-align: middle;
+    line-height: 1;
+    display: inline-block;
+    transition: 0.3s ease;
+}
+
+.home-icon i {
+    width: 22px;
+    height: 22px;
+    color: white;
+    vertical-align: middle;
+    transition: color 0.3s ease;
+}
+
+.home-emoji:hover {
+    transform: scale(1.1); /* Emoji membesar sedikit apabila disentuh */
+}
+
+.home-icon:hover i {
+    color: var(--secondary-color); 
+}
+
+/* =========================================
+   4. HERO SECTION
+   ========================================= */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Memaksa kandungan ke tengah horizontal */
+    padding: 120px 5% 60px 5%; 
+    background: linear-gradient(var(--bg-overlay), var(--bg-overlay)), 
+                url('forest-bg.jpg') center/cover fixed; 
+    min-height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+.hero-container {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Memastikan teks dan imej rapat di tengah */
+    gap: 60px; /* Jarak antara teks dan imej */
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.hero-content {
+    flex: 1; /* Memberi ruang yang seimbang dengan imej */
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-top: 0 !important; /* Memastikan tiada margin lama yang mengganggu */
+}
+
+.subtitle {
+    color: var(--secondary-color);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    color: #ffffff; 
+}
+
+.highlight {
+    color: var(--secondary-color); 
+    white-space: nowrap; 
+    display: inline-block;
+}
+
+.description {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    opacity: 0.9; 
+	color: #ffffff;
+    max-width: 1200px;
+    text-align: left;
+}
+
+.hero-btns .btn-primary {
+    background: var(--accent-blue);
+    color: white;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+	display: inline-block;
+    box-shadow: 0 4px 15px rgba(0, 188, 212, 0.4);
+}
+
+.hero-btns .btn-secondary {
+    color: white;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+/* =========================================
+   5. IMAGE & ANIMATION
+   ========================================= */
+.hero-image {
+    flex: 1; 
+    display: flex;
+    justify-content: center; 
+}
+
+.book-link {
+    display: inline-block;
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+.book-link:hover .floating-book {
+    filter: brightness(1.0); 
+    box-shadow: 0 25px 60px rgba(212, 175, 55, 0.4); 
+}
+
+.book-link:hover {
+    transform: scale(1.05); 
+}
+
+.floating-book {
+    width: 350px; 
+    max-width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+}
+
+/* =========================================
+   6. ABOUT US / TENTANG KAMI
+   ========================================= */
+.container {
+    max-width: 1100px;
+    margin: 50px auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--primary-color);
+    border-bottom: 4px solid var(--secondary-color); /* Royal Gold Underline */
+    display: inline-block;
+    margin-bottom: 40px;
+    padding-bottom: 5px;
+}
+
+.supervisor-card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    margin-bottom: 60px;
+    border-left: 8px solid var(--primary-color);
+    text-align: left;
+	
+	display: flex;
+	align-items: center;
+	gap:30px;
+}
+
+.supervisor-photo img {
+    width: 150px; /* Anda boleh adjust saiz ini */
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%; /* Membuat gambar jadi bulat */
+    border: 3px solid var(--secondary-color); /* Garisan emas sekeliling gambar */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.supervisor-info {
+    flex: 1; /* Supaya teks mengambil baki ruang yang ada */
+}
+
+.supervisor-info h3 {
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+.supervisor-info .role {
+    color: var(--secondary-color);
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.member-card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-top: 4px solid var(--secondary-color);
+    text-align: center;
+}
+
+.team-intro {
+    font-size: 15px;
+    margin-bottom: 30px;
+    color: #666;
+}
+
+@media (max-width: 768px) {
+    .supervisor-card {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+    
+    .supervisor-photo img {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+/* =========================================
+   7. AR PAGE INTERACTION (FIXED ALIGNMENT)
+   ========================================= */
+.ar-detail-section {
+    text-align: center;
+    max-width: 1100px; /* Master Width for alignment */
+    margin: 0 auto;
+    padding: 20px 20px 60px 20px;
+}
+
+.ar-steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 25px;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.ar-step-card {
+    background: white;
+    padding: 30px 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    text-align: center;
+	transition: all transform 0.3s ease;
+}
+
+.ar-step-icon {
+    width: 50px;          
+    height: 50px;         
+    background: var(--primary-color); 
+    color: var(--secondary-color);
+    border-radius: 50%;    
+    display: inline-flex;  
+    align-items: center;   
+    justify-content: center; 
+    margin-bottom: 20px;   
+    font-weight: bold;     
+    font-size: 1.2rem;    
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+}
+
+.ar-step-card:hover {
+    transform: translateY(-10px); /* Kesan terapung apabila disentuh */
+	box-shadow: 0 15px 30px rgba(212, 175, 55, 0.4);
+	border: 1px solidvar(--secondary-color);
+}
+
+.ar-step-card h4 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* VISUALISASI DIGITAL: Matches Grid Length exactly */
+.ar-preview-box {
+    display: flex;
+    background: #013220; /* Deep Forest Green */
+    color: white;
+    border-radius: 20px;
+    overflow: hidden;
+    text-align: left;
+    align-items: stretch; 
+    width: 100%; /* Matches 3-step grid width */
+    margin: 0 auto;
+}
+
+.preview-content {
+    padding: 60px 50px; /* Large padding as seen in screenshot */
+    flex: 1; 
+    display: flex;
+    align-items: center; 
+}
+
+.preview-content h3 {
+    color: #d4af37; /* Royal Gold */
+    font-size: 2.2rem; /* Large Title Size */
+    font-family: 'Playfair Display', serif;
+}
+
+.preview-visual {
+    flex: 1; 
+}
+
+.ar-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Story Card for Sinopsis */
+.story-card {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    text-align: justify;
+    line-height: 1.9;
+}
+
+.story-card p {
+    margin-bottom: 20px;
+    font-size: 15px;
+}
+
+* =========================================
+   HALAMAN CUBA-AR (CLEANED VERSION)
+   ========================================= */
+
+.lang-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    padding-top: 140px; /* Jarak dari nav fixed */
+}
+
+.ar-selection-section {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.lang-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+    width: 100%;
+}
+
+/* Membuang gaya pautan asal */
+.lang-card-link {
+    cursor: pointer; /* Menukar ikon tetikus kepada tangan (pointer) */
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.lang-card-link:hover {
+    transform: translateY(-10px);
+}
+
+/* Gaya Kad Bahasa */
+.lang-card {
+    background: white;
+    padding: 35px 20px;
+    border-radius: 15px;
+    text-align: center;
+    border-top: 5px solid var(--secondary-color);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.lang-card:hover {
+    box-shadow: 0 15px 35px rgba(212, 175, 55, 0.4);
+}
+
+.lang-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.lang-card p {
+    color: #666; /* Warna sub-teks lebih lembut */
+    font-size: 0.85rem;
+    margin-top: 5px;
+    text-decoration: none !important;
+}
+
+/* Gaya Imej Bendera */
+.flag-img {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #f4f4f4;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    margin-bottom: 15px;
+}
+
+.lang-card:hover .flag-img {
+    transform: scale(1.1);
+}
+
+/* Responsif Mobile */
+@media (max-width: 768px) {
+    .lang-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px;
+    }
+    
+    .lang-container {
+        padding-top: 180px;
+    }
+
+    .flag-img {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+/* =========================================
+   8. FOOTER
+   ========================================= */
+footer {
+    text-align: center;
+    padding: 40px;
+    background: #222;
+    color: #888;
+    font-size: 0.8rem;
+}
+
+@media (max-width: 768px) {
+    .ar-preview-box { flex-direction: column; }
+}
+
+/* =========================================
+   9. HUBUNGI KAMI 
+   ========================================= */
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.contact-card {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05); /* */
+    transition: all 0.3s ease;
+    border-top: 4px solid var(--primary-color);
+}
+
+.contact-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(212, 175, 55, 0.4); /* Gold Shadow */
+    border-top: 4px solid var(--secondary-color);
+}
+
+.contact-icon {
+    width: 60px;
+    height: 60px;
+    background: #f4f4f4;
+    color: var(--primary-color);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    transition: 0.3s;
+}
+
+.contact-card:hover .contact-icon {
+    background: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+.contact-card h4 {
+    margin-bottom: 15px;
+    color: var(--primary-color);
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+}
+
+.home-emoji {
+    font-size: 2rem; /* Saiz lebih besar */
+    vertical-align: middle;
+    text-decoration: none;
+    display: inline-block;
+	
+}
+
+/* =========================================
+   10. PENYELARASAN NAVIGASI (FIXED)
+   ========================================= */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background: var(--primary-color);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Tambah padding pada container supaya teks tidak terselindung di bawah nav */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 120px 20px 60px 20px; /* 120px di atas menolak kandungan ke bawah nav */
+}
+/* =========================================
+   11. GAYA UNTUK MENU AKTIF (ACTIVE LINK)
+   ========================================= */
+
+.nav-links a.active {
+    color: var(--nav-active) !important; /* Tukar warna kepada Emas */
+    font-weight: bold;
+    border-bottom: 2px solid var(--nav-active); /* Tambah garisan bawah */
+    padding-bottom: 5px;
+}
+
+.nav-links a:hover {
+    color: var(--nav-active);
+    opacity: 0.8;
+}
+
+/* =========================================
+   12. RESPONSIVENESS (Phone & Tablet)
+   ========================================= */
+
+/* UNTUK TABLET & SKRIN SEDERHANA (Di bawah 1024px) */
+@media (max-width: 1024px) {
+    .ar-steps-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 kolum untuk tablet */
+    }
+    
+    .contact-grid {
+        grid-template-columns: repeat(2, 1fr) !important; /* Kekal 2x2 */
+    }
+
+    h1 {
+        font-size: 2.8rem;
+    }
+}
+
+/* UNTUK TELEFON (Di bawah 768px) */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column; /* Stack Logo on top of Menu */
+        align-items: center;    /* Center everything */
+        padding: 15px 5%;
+        gap: 15px;              /* Space between logo and links */
+    }
+
+    .logo {
+        font-size: 1.2rem;      /* Slightly larger for readability */
+        white-space: normal;    /* Allow logo text to wrap if name is long */
+        text-align: center;
+        width: 100%;
+    }
+
+    .nav-links {
+        display: flex;
+        flex-wrap: wrap;        /* THIS IS THE KEY: allows links to drop to next line */
+        justify-content: center;
+        gap: 10px;              /* Spacing between items */
+        width: 100%;
+    }
+
+    .nav-links li {
+        margin: 5px 0;
+    }
+
+    .nav-links a {
+        font-size: 0.85rem;     /* Readable size */
+        padding: 5px 10px;
+        white-space: nowrap;    /* Keep "Tentang Kami" as one unit */
+    }
+
+    .btn-contact {
+        padding: 6px 12px !important;
+        font-size: 0.85rem !important;
+    }
+
+    /* Adjust Hero padding because the header is now taller */
+    .hero {
+        padding-top: 180px; 
+    }
+    
+    .hero-container {
+        flex-direction: column; 
+        text-align: center;
+        gap: 20px;
+    }
+
+    .hero-image {
+        order: -1; /* Memaksa gambar buku muncul di atas teks */
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .hero-content {
+        order: 2; /* Teks di bawah buku */
+        padding: 0 10px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .floating-book {
+        width: 200px; /* Saiz buku yang seimbang untuk phone */
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+	
+	highlight {
+        white-space: nowrap; /* Tetap kekal satu baris di phone */
+    }
+
+    .description {
+        text-align: center; /* Memastikan deskripsi di tengah pada phone */
+        margin: 0 auto 25px auto;
+    }
+
+    /* Grid & Preview Box menjadi 1 kolum */
+    .ar-steps-grid, 
+    .team-grid,
+    .ar-preview-box,
+    .contact-grid {
+        grid-template-columns: 1fr !important;
+        flex-direction: column;
+    }
+}
+
+/* UNTUK MOD MENDATAR (Landscape) */
+@media (max-height: 500px) and (orientation: landscape) {
+    .hero {
+        padding-top: 80px;
+    }
+    .hero-image {
+        display: none; /* Sembunyikan gambar supaya teks muat dalam skrin pendek */
+    }
+}
