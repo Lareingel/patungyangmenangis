@@ -37,7 +37,7 @@ p {
    3. NAVIGATION 
    ========================================= */
 header {
-    position: sticky;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -451,9 +451,8 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    min-height: 80vh;
-    padding-top: 140px; /* Jarak dari nav fixed */
+    justify-content: flex-start; /* Ubah dari center supaya kandungan bermula dari atas */
+    min-height: auto; /* Biarkan tinggi mengikut kandungan */
 }
 
 .ar-selection-section {
@@ -621,19 +620,18 @@ footer {
    10. PENYELARASAN NAVIGASI (FIXED)
    ========================================= */
 header {
-    position: fixed;
+    position: sticky; /* Menjadikan header kekal di atas tanpa overlay kandungan */
     top: 0;
     width: 100%;
-    z-index: 1000;
+    z-index: 2000;
     background: var(--primary-color);
-    transition: transform 0.3s ease-in-out;
 }
 
-/* Tambah padding pada container supaya teks tidak terselindung di bawah nav */
 .container {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 120px 20px 60px 20px; /* 120px di atas menolak kandungan ke bawah nav */
+    /* Buang padding-top yang terlalu besar jika menggunakan sticky */
+    padding: 40px 20px 60px 20px; 
 }
 /* =========================================
    11. GAYA UNTUK MENU AKTIF (ACTIVE LINK)
